@@ -1,0 +1,205 @@
+/*# sourceMappingURL=styles.css.map */
+
+
+ body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      background-image: url('tennis2.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      
+    }
+    .header{
+      display: grid;
+      grid-template-columns: 1fr;
+      background-image: url('TennisBanner.jpg');
+      color: rgb(224, 240, 5);
+      text-align: center;
+      width: 1fr;
+      padding: 15px;
+    }
+   form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 10px;
+      padding: 10px;
+      
+}
+    .form-container {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      grid-gap: 10px; /* Label column and input column */
+      
+    }
+
+    .form-container label {
+      grid-column: 1/2;
+      text-align: left;
+      align-self: center;
+      padding: 0px 10px;
+     
+      
+      
+    }
+
+    .form-container input {
+      grid-column: 2/3;
+      border: 1px solid #3909b3e6;
+      border-radius: 4px;
+      padding: 10px 10px;
+    }
+    .form-container select {
+      grid-column: 2/3;
+      border: 1px solid #3909b3e6;
+      border-radius: 4px;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.5); /* Increase the number for a bigger checkbox */
+    }
+    .button {
+      grid-column: 1 / -1; /* Span across all columns */
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 200 px;
+      justify-self: center;
+    }
+
+    .button:hover {
+      background-color: #17db5b;
+    }
+
+    nav {
+      background-color: #04371a; /* Forest Green */
+      display: grid;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 2rem;
+    }
+
+    .logo {
+      color: #ffeb3b; /* Bright Yellow */
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: .5rem;
+    }
+
+    .nav-links li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ffeb3b; /* Yellow on hover */
+    }
+    .nav-links .active {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+    padding: 4px 12px;
+    text-decoration: none;
+}
+/* Flash Messages */
+.flash-messages {
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.alert {
+  padding: 12px 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: center;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #b2dfb2;
+}
+
+.alert-error, .alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+.alert-info {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+/* Table Styles */
+@media (max-width: 700px) {
+  .table-scroll {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+}
+
+.table__ {
+  width: 100%;
+  border-spacing: 0;
+  
+  min-width: 600px;
+}
+
+.table__cell {
+  padding: 8px;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.table__header {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: left;
+}
+.table__row{
+  background-color: wheat;
+}
+.table__row:nth-child(even) {
+  background-color: #2eedaa;
+}
+/* search form */.search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.search-form button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
