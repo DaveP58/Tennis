@@ -1,0 +1,112 @@
+{%extends "base.html"%}
+  {% block body %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endwith %}
+    <body >
+       
+        <nav>
+            <a href="logo.jpg" class="logo"> Welcome {{user.fname}}  </a>
+            <ul class="nav-links">
+             <li><a href="#" class="{% if page == 'dashboard' %}active{% endif %}">Members Info</a></li>
+            <li><a href="memdir">Member Directory </a></li>
+            <li><a href="#">Club Events </a></li>
+            <li><a href="#">Payments </a></li>
+            </ul>
+        </nav>
+ 
+        <div class="page"> 
+            <form method="POST" action="{{ url_for('update_dashboard') }}">
+            <input type="hidden" name="recID" value="{{ user.recID }}">
+            <div class="form-container">
+                        <label class= "Label"for="firstName" >First Name</label>
+                        <input type="text" id="firstName" name="firstName" value = {{user.fname}} >
+                        <label class ="Label"for="LastName">Last Name</label>
+                        <input type="text" id="LastName" name="LastName" value= {{user.lname}} >
+                        <label class ="Label"for="Phone">Phone</label>
+                        <input type="phone" id="phone" name='phone'value ={{user.phone}}>
+                        <label class ="Label"for="email">Email :</label>
+                        <input type="email" id="email" name="email"  value = {{user.email}}>
+                        <label class ="Label"for="MemberSince">Member Since  </label>
+                        <input type="text" id="memberSince" name='MemberSince'value={{user.MemberSince}}>
+                        <label></label>
+                        <label style="grid-column: span 3;" >{% if user.duesPaid == "Y2025" %}Annual Dues Paid for 2025{% endif %}</label>
+                        <label  style="grid-column: span 3;" >{% if user.ballPaid == "BallMachine"%} Ball Machine Paid {%endif%} </label>
+    
+                        <label  style="grid-column: span 3;" >{% if  user.ballPaid == "BallMachine" and user.ballCertified == "Certified"%} Door Code - 2346{% elif user.ballPaid == "BallMachine" %} Sign Ball Machine Training {%else%} No Ball Machine{%endif%}</label>   
+            </div>  
+            <div class="form-container">
+                        <label for="TTExp">Table Tennis Exp:</label>
+                        <select name="TTExp" id="TTExp" >
+                            <option value="" disabled {% if not user.TTExperience %}selected{% endif %}>Select your experience</option>
+                            <option value="Beginner" {% if user.TTExperience == "Beginner" %}selected{% endif %}>Beginner</option>
+                            <option value="Novice" {% if user.TTExperience == "Novice" %}selected{% endif %}>Novice</option>
+                            <option value="Intermediate" {% if user.TTExperience == "Intermediate" %}selected{% endif %}>Intermediate</option>
+                            <option value="Advanced" {% if user.TTExperience == "Advanced" %}selected{% endif %}>Advanced</option>
+                            <option value="UNK" {% if user.TTExperience == "UNK" %}selected{% endif %}>Unknown</option>
+                            </select>
+              
+                        <label for="USTA">USTALevel:  </label>
+                            <select name="USTALevel" id="USTALevel" required>
+                                <option value=  disabled {% if not user.USTALevel %}selected{% endif %}>Select your USTA rating</option>
+                                <option value="2.5" {% if user.USTALevel == "2.5" %}selected{% endif %}>2.5</option>
+                                <option value="3.0" {% if user.USTALevel == "3" %}selected{% endif %}>3.0</option>
+                                <option value="3.5" {% if user.USTALevel == "3.5" %}selected{% endif %}>3.5</option>
+                                <option value="4.0" {% if user.USTALevel == "4" %}selected{% endif %}>4.0</option>
+                                <option value="UNK" {% if user.USTALevel == "UNK" %}selected{% endif %}>Unknown</option>
+                            </select>
+                            
+                        <fieldset style="grid-column: span 3;">
+                                <legend>Select Interests </legend>
+                
+                                <label> Tennis</label>
+                                <input type="checkbox" id="Tennis" name="Tennis" value="T" {% if user.playsTennis == "TRUE" %}checked{% endif %}> 
+                                <div></div>
+                                <label>Table Tennis</label>
+                                <input type="checkbox" id="TableTennis" name="TableTennis" value="TT" {% if user.playsTT == "TRUE" %}checked{% endif %}> 
+                                <div></div>
+                                <label>Platform Tennis</label>
+                                <input type="checkbox" id="PlatformTennis" name="PlatformTennis" value="PT" {% if user.playsPT == "TRUE" %}checked{% endif %}> 
+                                <div></div>
+                                <label>Red Ball</label>
+                                <input type="checkbox" id="RedBall" name="RedBall" value="RB" {% if user.playsTT == "TRUE" %}checked{% endif %}> 
+                        </fieldset>
+                        <fieldset style="grid-column: span 3;">
+                                <legend> Remove from  </legend>
+                
+                                <label> Bulk Email Commmunication </label>
+                                <input type="checkbox" id="Tennis" name="Tennis" value="T" {% if user.playsTennis == "TRUE" %}checked{% endif %}> 
+                                <div></div>
+                                <label>Name in Directory </label>
+                                <input type="checkbox" id="TableTennis" name="TableTennis" value="TT" {% if user.playsTT == "TRUE" %}checked{% endif %}> 
+                                <div></div>
+                                
+                        </fieldset>
+                  <div style="text-align:center; grid-column: span 2;">
+                    <button type="submit" class="button">Save Changes</button>
+                </div>      
+                </div> 
+               
+         </form>
+         
+        </page>
+  
+        <script>
+        setTimeout(function() {
+            var flash = document.querySelector('.flash-messages');
+            if (flash) {
+            flash.style.display = 'none';
+            }
+        }, 4000); // 4000ms = 4 seconds
+        </script>
+                     
+
+   {%endblock%}
+
+
