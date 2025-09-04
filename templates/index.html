@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+    <h2 style="text-align:center;">Please Log in with your Rec Card ID</h2> 
+    <br>
+        <div class="form-container" style="width:150px; margin: 0 auto;" >
+            <form method="POST" action="{{ url_for('login') }}" >
+                {{ form.csrf_token }}
+                    <div style= "padding: 20px;">
+                       <div> {{ form.recID.label}} </div>
+                        <br>
+                        <div>{{ form.recID(size=10) }}</div>
+                    <br>
+                    <div><input type="submit" class="button" value="Log In"></div>
+             </div>   
+
+             
+        </form> 
+{% endblock %}
